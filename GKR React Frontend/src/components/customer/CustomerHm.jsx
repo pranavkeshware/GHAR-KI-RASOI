@@ -31,7 +31,6 @@ const CustomerHm = (props) => {
     HomeMakerService.getAllCities()
       .then((response) => {
         setCities(response.data.result);
-        console.log("jai ho");
       })
       .catch((error) => {
         toast.error("Something went wrong", { position: "bottom-center" });
