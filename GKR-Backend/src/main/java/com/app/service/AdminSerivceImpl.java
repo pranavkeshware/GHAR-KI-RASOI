@@ -28,6 +28,7 @@ public class AdminSerivceImpl implements IAdminService {
 		Optional<Admin> admin = adminRepo.authenticateAdmin(email, password);
 		if (admin.isPresent()) {
 			System.out.println(admin.get());
+			System.out.println("jai hooo hoo");
 			return admin.get();
 		} else {
 			System.out.println("not present");
