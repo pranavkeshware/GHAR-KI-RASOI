@@ -7,6 +7,7 @@ import com.app.dto.HomeMakerDTO;
 import com.app.pojos.HomeMaker;
 
 public interface IHomeMakerService {
+	
 	HomeMaker authenticateHomeMaker(String emailId, String pswd);
 
 	HomeMakerDTO signUpHomeMaker(HomeMaker homeMaker);

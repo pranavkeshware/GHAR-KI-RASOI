@@ -7,6 +7,7 @@ import com.app.pojos.Customer;
 import com.app.pojos.HomeMaker;
 
 public interface ICustomerService {
+	
 	Customer authenticateCustomer(String email, String password);
 
 	CustomerDTO signUpCustomer(Customer customer);
