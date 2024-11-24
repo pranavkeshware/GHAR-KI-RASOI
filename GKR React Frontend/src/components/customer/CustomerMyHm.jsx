@@ -209,19 +209,19 @@ const CustomerMyHm = () => {
               >
                 {[
                   {
-                    title: "Mini Package",
+                    title: "Mini",
                     subtitle: "Curb Instant Cravings",
                     price: 1800,
                     img: "https://i.pinimg.com/originals/5f/8d/e8/5f8de8ccdf8c63c081347690ce87b3ce.png",
                   },
                   {
-                    title: "Classic Package",
+                    title: "Classic",
                     subtitle: "Serves 2 - A Proper Home-Cooked Delicacy",
                     price: 2400,
                     img: "https://i.pinimg.com/originals/d4/30/1c/d4301c6b1ff43529fd646fe49166e9e1.jpg",
                   },
                   {
-                    title: "Jumbo Package",
+                    title: "Jumbo",
                     subtitle: "Serves 4 - Sharing Is Caring",
                     price: 3000,
                     img: "https://i.pinimg.com/736x/3f/aa/04/3faa04682ec48de810f1260988847aab.jpg",
