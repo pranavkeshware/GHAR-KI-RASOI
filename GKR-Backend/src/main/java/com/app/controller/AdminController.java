@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.pojos.Admin;
 import com.app.service.IAdminService;
 
+
 @CrossOrigin
 @RestController
 @RequestMapping("/admin")

@@ -1,34 +1,60 @@
-import React, { useEffect } from "react"
-import { Container, Card, CardImg, CardText, CardImgOverlay, Row, Col } from "reactstrap"
+import React, { useEffect } from "react";
+import {
+  Container,
+  Card,
+  CardImg,
+  CardText,
+  CardImgOverlay,
+  Row,
+  Col,
+} from "reactstrap";
 
 const AboutUs = () => {
   useEffect(() => {
-    document.title = "About Us || GKK"
-  }, [])
+    document.title = "About Us || GKK";
+  }, []);
 
   return (
     <div>
-      <Container style={{ backgroundColor: '#333', padding: '2rem', color: 'white' }}>
+      <Container
+        style={{ backgroundColor: "#333", padding: "2rem", color: "white" }}
+      >
         <h2 className="text-center">-: ABOUT US :-</h2>
         <br />
         <br />
         <Card inverse>
-          <CardImg width="100%" src="https://cdn.pixabay.com/photo/2014/06/11/17/00/food-366875_1280.jpg" alt="Card image cap" />
+          <CardImg
+            width="100%"
+            src="https://cdn.pixabay.com/photo/2014/06/11/17/00/food-366875_1280.jpg"
+            alt="Card image cap"
+          />
           <CardImgOverlay>
             <CardText tag="h4">
-              The purpose of our application is to create a platform which provides an opportunity to the local-area homemakers to start their own Tiffin Services while ensuring the local-area bachelors diminish their hunger on a budget.
-              <br /><br />
-              The users of our web-application will need to create an account as a customer to avail Tiffin Services based on the availability of the Homemaker in the respective locality.
-              <br /><br />
-              Customers can navigate through different categories of food items as per their choice.
-              <br /><br />
-              A payment functionality will be built in to allow the use of credit cards, debit cards or COD for customers.
+              The purpose of our application is to create a platform which
+              provides an opportunity to the local-area homemakers to start
+              their own Tiffin Services while ensuring the local-area bachelors
+              diminish their hunger on a budget.
+              <br />
+              <br />
+              The users of our web-application will need to create an account as
+              a customer to avail Tiffin Services based on the availability of
+              the Homemaker in the respective locality.
+              <br />
+              <br />
+              Customers can navigate through different categories of food items
+              as per their choice.
+              <br />
+              <br />A payment functionality will be built in to allow the use of
+              credit cards, debit cards or COD for customers.
             </CardText>
           </CardImgOverlay>
         </Card>
         <br />
         <br />
-        <p className="text-center"> -----------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+        <p className="text-center">
+          {" "}
+          -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+        </p>
         <br />
         <h2 className="text-center">-: CONTACT US :-</h2>
         <br />
@@ -87,7 +113,7 @@ const AboutUs = () => {
         </Row>
       </Container>
     </div>
-  )
-}
+  );
+};
 
 export default AboutUs;

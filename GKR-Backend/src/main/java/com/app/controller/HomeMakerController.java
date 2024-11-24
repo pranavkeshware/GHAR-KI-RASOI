@@ -21,14 +21,14 @@ import com.app.dto.ResponseDTO;
 import com.app.pojos.HomeMaker;
 import com.app.service.IHomeMakerService;
 
+
 @CrossOrigin
-@RestController // Mandatory class level annotation
-//@RestController => @Controller on the cls level + @ResponseBody on the ret types of 
-//all req handling methods, annotated with @RequestMapping / @GetMapping.....
-@RequestMapping("/homeMaker") // optional : Resource
+@RestController 
+@RequestMapping("/homeMaker")
 public class HomeMakerController {
+	
 	// dependency
-	@Autowired // autowire=byType}
+	@Autowired // autowire=byType
 	private IHomeMakerService homeMakerService;
 	
 	@Autowired

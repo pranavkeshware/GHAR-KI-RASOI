@@ -70,8 +70,12 @@ const CustomerHm = (props) => {
 
   return (
     <div className="text-center">
-      <Container className="text-center" style={{ background: "darkgray" }}>
-        <h3>Select your City:</h3>
+      {/* Add margin to prevent overlap */}
+      <Container
+        className="text-center"
+        style={{ background: "darkgray", marginTop: "15px" }}
+      >
+        <h3>Select your HomeMaker:</h3>
         <select
           id="myCity"
           className="form-select selectpicker my-3 btn btn-dark"

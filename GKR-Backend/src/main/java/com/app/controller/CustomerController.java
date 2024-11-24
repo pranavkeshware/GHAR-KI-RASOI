@@ -21,14 +21,16 @@ import com.app.dto.ResponseDTO;
 import com.app.pojos.Customer;
 import com.app.service.ICustomerService;
 
+
 @CrossOrigin
 @RestController // Mandatory class level annotation
 //@RestController => @Controller on the cls level + @ResponseBody on the ret types of 
 //all req handling methods, annotated with @RequestMapping / @GetMapping.....
-@RequestMapping("/customer") // optional : Resource
+@RequestMapping("/customer")
 public class CustomerController {
+	
 	// dependency
-	@Autowired // autowire=byType}
+	@Autowired // autowire=byType
 	private ICustomerService customerService;
 
 	@Autowired // used in razorpay(payment method)
@@ -36,7 +38,7 @@ public class CustomerController {
 
 	public CustomerController() {
 		super();
-		//test
+		
 		System.out.println("in ctor of " + getClass().getName() + " " + customerService);
 	}
 
@@ -78,11 +80,11 @@ public class CustomerController {
 	@GetMapping("/getMyHomeMaker/{custId}")
 	public ResponseEntity<?> getMyHomeMaker(@PathVariable String custId) {
 
-		System.out.println("in getMyHomeMaker " + custId);
+		System.out.println("in getMyHomeMakercontroller " + custId);
 		return ResponseEntity.ok(new ResponseDTO<>(customerService.getMyHomeMaker(Integer.parseInt(custId))));
 
 	}
-
+	
 	@DeleteMapping("/removeMyHomeMaker/{custId}")
 	public ResponseEntity<?> removeMyHomeMaker(@PathVariable String custId) {
 		System.out.println("in removeMyHomeMaker " + custId);

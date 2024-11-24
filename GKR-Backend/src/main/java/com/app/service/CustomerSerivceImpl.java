@@ -8,7 +8,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.app.custom_exceptions.ResourceNotFoundException;
 import com.app.dao.CustomerRepository;
 import com.app.dao.HomeMakerRepository;
@@ -17,6 +16,7 @@ import com.app.pojos.Customer;
 import com.app.pojos.HomeMaker;
 import com.app.pojos.PlanPackage;
 import com.app.pojos.PlanType;
+
 
 @Service
 @Transactional // OPtional BUT reco.
@@ -58,6 +58,7 @@ public class CustomerSerivceImpl implements ICustomerService {
 		BeanUtils.copyProperties(persistentCustomer, dto);
 		return dto;
 	}
+	
 
 	@Override
 	public Customer addMyHomeMaker(int hmId, int custId) {
@@ -77,6 +78,8 @@ public class CustomerSerivceImpl implements ICustomerService {
 		}
 		return null;
 	}
+	
+	
 
 	@Override
 	public HomeMaker getMyHomeMaker(int custId) {

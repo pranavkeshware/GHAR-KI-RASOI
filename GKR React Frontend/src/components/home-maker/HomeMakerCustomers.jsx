@@ -8,13 +8,15 @@ const HomeMakerCustomers = () => {
   const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
-    document.title = "Customer || HomeMaker";
+    document.title = "HomeMaker || Customers";
     fetchCustomers();
   }, []);
 
   const fetchCustomers = async () => {
     try {
-      const response = await HomeMakerService.getMyCustomers(SessionService.getCurrentUser().id);
+      const response = await HomeMakerService.getMyCustomers(
+        SessionService.getCurrentUser().id
+      );
       console.log(response);
       setCustomers(response.data.result);
     } catch (error) {
@@ -25,7 +27,10 @@ const HomeMakerCustomers = () => {
 
   return (
     <Container className="text-center">
-      <div className="text-center" style={{ background: "darkgray", padding: "20px" }}>
+      <div
+        className="text-center"
+        style={{ background: "darkgray", padding: "20px" }}
+      >
         <h3>All Customer Details</h3>
         <Table className="table table-striped" hover bordered>
           <thead style={{ background: "#333", color: "white" }}>

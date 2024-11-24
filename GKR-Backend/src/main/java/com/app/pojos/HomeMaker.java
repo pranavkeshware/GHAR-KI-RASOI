@@ -18,7 +18,7 @@ public class HomeMaker extends BaseEntity {
 
 	@Column(length = 50, unique = true)
 	private String email;
-	@Column(length = 50, nullable = false)
+	@Column(length = 255, nullable = false)
 	private String password;
 
 	@Column(length = 50)

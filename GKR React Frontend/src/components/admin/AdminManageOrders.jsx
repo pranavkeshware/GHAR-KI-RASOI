@@ -8,7 +8,7 @@ const AdminManageOrders = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    document.title = "Admin || Orders";
+    document.title = "Admin || ManageOrders";
     getAllOrders();
   }, []);
 
@@ -31,9 +31,8 @@ const AdminManageOrders = () => {
     <div className="text-center">
       <Container
         className="text-center"
-        style={{ background: "darkgray", marginTop: "70px" }}
+        style={{ background: "darkgray", marginTop: "15px" }}
       >
-        {/* Add marginTop to push content below the navbar */}
         <h3>All Orders</h3>
         <p>You can manage orders here...</p>
         {loading ? (
@@ -59,7 +58,7 @@ const AdminManageOrders = () => {
                   <td>{order.paymentId}</td>
                   <td>{order.dateTime}</td>
                   <td>{order.receipt}</td>
-                  <td>{order.amount / 100}</td>
+                  <td>{order.amount}</td>
                   <td>{order.status}</td>
                   <td>{order.customerId}</td>
                   <td>{order.homeMakerId}</td>

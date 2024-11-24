@@ -27,8 +27,11 @@ const HomeMakerOrders = () => {
 
   return (
     <Container className="text-center">
-      <div className="text-center" style={{ background: "darkgray", padding: "20px" }}>
-        <h3>All Orders:</h3>
+      <div
+        className="text-center"
+        style={{ background: "darkgray", padding: "20px" }}
+      >
+        <h3>All Orders :</h3>
         <Table hover bordered className="table table-striped">
           <thead style={{ background: "#333", color: "white" }}>
             <tr>
@@ -49,7 +52,7 @@ const HomeMakerOrders = () => {
                 <td>{order.paymentId}</td>
                 <td>{order.dateTime}</td>
                 <td>{order.receipt}</td>
-                <td>{order.amount / 100}</td>
+                <td>{order.amount}</td>
                 <td>{order.status}</td>
                 <td>{order.customerId}</td>
                 <td>{order.homeMakerId}</td>

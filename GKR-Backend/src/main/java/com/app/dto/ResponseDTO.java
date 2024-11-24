@@ -1,23 +1,37 @@
 package com.app.dto;
 
 public class ResponseDTO<T> {
-	private T result;
+    private String message;
+    private T result;
 
-	public ResponseDTO() {
-		// TODO Auto-generated constructor stub
-	}
+    // Default constructor
+    public ResponseDTO() {}
 
-	public ResponseDTO(T result) {
-		super();
-		this.result = result;
-	}
+    // Constructor for only result
+    public ResponseDTO(T result) {
+        this.result = result;
+    }
 
-	public T getResult() {
-		return result;
-	}
+    // Constructor for message and result
+    public ResponseDTO(String message, T result) {
+        this.message = message;
+        this.result = result;
+    }
+    
+    // Getters and Setters
+    public String getMessage() {
+        return message;
+    }
 
-	public void setResult(T result) {
-		this.result = result;
-	}
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
+    public T getResult() {
+        return result;
+    }
+
+    public void setResult(T result) {
+        this.result = result;
+    }
 }
