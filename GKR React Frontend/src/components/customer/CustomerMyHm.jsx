@@ -52,19 +52,33 @@ const CustomerMyHm = () => {
 
   const buttonHandle = (pack, price) => {
     const planType = document.getElementById("plan-type").value;
-    const homeMakerId = homeMaker.id; // Assuming homeMaker contains the HomeMaker details
-    const customerId = user.id; // Assuming user contains customer details
+    const homeMakerId = homeMaker.id;
+    const customerId = user.id;
     CustomerService.updatePackage(planType, pack)
       .then((response) => {
         SessionService.storeUser(response.data.result);
         setUser(SessionService.getCurrentUser());
         SessionService.setPrice(price);
-        // Initiate Razorpay payment using PaymentService
-        PaymentService.initiateRazorpayPayment(customerId, homeMakerId, price); // Call PaymentService for payment
+        PaymentService.initiateRazorpayPayment(customerId, homeMakerId, price);
       })
       .catch((error) => {
         toast.error("Failed to update package", { position: "bottom-center" });
       });
+  };
+
+  const cardStyle = {
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+    borderRadius: "8px",
+    overflow: "hidden",
+    width: "300px",
+    height: "400px",
+    textAlign: "center",
+    margin: "0 auto",
+  };
+
+  const cardImgStyle = {
+    height: "250px",
+    objectFit: "cover",
   };
 
   return (
@@ -193,132 +207,64 @@ const CustomerMyHm = () => {
                   gap: "20px",
                 }}
               >
-                <Card
-                  style={{
-                    boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
-                    borderRadius: "8px",
-                  }}
-                >
-                  <CardImg
-                    top
-                    width="100%"
-                    height="250px"
-                    src="https://i.pinimg.com/originals/5f/8d/e8/5f8de8ccdf8c63c081347690ce87b3ce.png"
-                    alt="Card image cap"
-                    style={{ borderRadius: "8px 8px 0 0" }}
-                  />
-                  <CardBody>
-                    <CardTitle
-                      tag="h5"
-                      style={{ fontSize: "18px", fontWeight: "bold" }}
-                    >
-                      Mini Package
-                    </CardTitle>
-                    <CardSubtitle
-                      tag="h6"
-                      className="mb-2 text-muted"
-                      style={{ fontSize: "14px" }}
-                    >
-                      Curb Instant Cravings
-                    </CardSubtitle>
-                    <Button
-                      className="btn-info"
-                      onClick={() => buttonHandle("MINI", 1800)}
-                      style={{
-                        marginTop: "10px",
-                        padding: "10px 20px",
-                        borderRadius: "5px",
-                        fontSize: "16px",
-                      }}
-                    >
-                      &#8377;1800
-                    </Button>
-                  </CardBody>
-                </Card>
-                <Card
-                  style={{
-                    boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
-                    borderRadius: "8px",
-                  }}
-                >
-                  <CardImg
-                    top
-                    width="100%"
-                    height="250px"
-                    src="https://i.pinimg.com/originals/d4/30/1c/d4301c6b1ff43529fd646fe49166e9e1.jpg"
-                    alt="Card image cap"
-                    style={{ borderRadius: "8px 8px 0 0" }}
-                  />
-                  <CardBody>
-                    <CardTitle
-                      tag="h5"
-                      style={{ fontSize: "18px", fontWeight: "bold" }}
-                    >
-                      Classic Package
-                    </CardTitle>
-                    <CardSubtitle
-                      tag="h6"
-                      className="mb-2 text-muted"
-                      style={{ fontSize: "14px" }}
-                    >
-                      Serves 2 - A Proper Home-Cooked Delicacy
-                    </CardSubtitle>
-                    <Button
-                      className="btn-info"
-                      onClick={() => buttonHandle("CLASSIC", 2400)}
-                      style={{
-                        marginTop: "10px",
-                        padding: "10px 20px",
-                        borderRadius: "5px",
-                        fontSize: "16px",
-                      }}
-                    >
-                      &#8377;2400
-                    </Button>
-                  </CardBody>
-                </Card>
-                <Card
-                  style={{
-                    boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
-                    borderRadius: "8px",
-                  }}
-                >
-                  <CardImg
-                    top
-                    width="100%"
-                    height="250px"
-                    src="https://i.pinimg.com/736x/3f/aa/04/3faa04682ec48de810f1260988847aab.jpg"
-                    alt="Card image cap"
-                    style={{ borderRadius: "8px 8px 0 0" }}
-                  />
-                  <CardBody>
-                    <CardTitle
-                      tag="h5"
-                      style={{ fontSize: "18px", fontWeight: "bold" }}
-                    >
-                      Jumbo Package
-                    </CardTitle>
-                    <CardSubtitle
-                      tag="h6"
-                      className="mb-2 text-muted"
-                      style={{ fontSize: "14px" }}
-                    >
-                      Serves 4 - Sharing Is Caring
-                    </CardSubtitle>
-                    <Button
-                      className="btn-info"
-                      onClick={() => buttonHandle("JUMBO", 3000)}
-                      style={{
-                        marginTop: "10px",
-                        padding: "10px 20px",
-                        borderRadius: "5px",
-                        fontSize: "16px",
-                      }}
-                    >
-                      &#8377;3000
-                    </Button>
-                  </CardBody>
-                </Card>
+                {[
+                  {
+                    title: "Mini Package",
+                    subtitle: "Curb Instant Cravings",
+                    price: 1800,
+                    img: "https://i.pinimg.com/originals/5f/8d/e8/5f8de8ccdf8c63c081347690ce87b3ce.png",
+                  },
+                  {
+                    title: "Classic Package",
+                    subtitle: "Serves 2 - A Proper Home-Cooked Delicacy",
+                    price: 2400,
+                    img: "https://i.pinimg.com/originals/d4/30/1c/d4301c6b1ff43529fd646fe49166e9e1.jpg",
+                  },
+                  {
+                    title: "Jumbo Package",
+                    subtitle: "Serves 4 - Sharing Is Caring",
+                    price: 3000,
+                    img: "https://i.pinimg.com/736x/3f/aa/04/3faa04682ec48de810f1260988847aab.jpg",
+                  },
+                ].map((pkg, index) => (
+                  <Card key={index} style={cardStyle}>
+                    <CardImg
+                      top
+                      src={pkg.img}
+                      alt={`${pkg.title} image`}
+                      style={cardImgStyle}
+                    />
+                    <CardBody>
+                      <CardTitle
+                        tag="h5"
+                        style={{ fontSize: "18px", fontWeight: "bold" }}
+                      >
+                        {pkg.title}
+                      </CardTitle>
+                      <CardSubtitle
+                        tag="h6"
+                        className="mb-2 text-muted"
+                        style={{ fontSize: "14px" }}
+                      >
+                        {pkg.subtitle}
+                      </CardSubtitle>
+                      <Button
+                        className="btn-info"
+                        onClick={() =>
+                          buttonHandle(pkg.title.toUpperCase(), pkg.price)
+                        }
+                        style={{
+                          marginTop: "10px",
+                          padding: "10px 20px",
+                          borderRadius: "5px",
+                          fontSize: "16px",
+                        }}
+                      >
+                        &#8377;{pkg.price}
+                      </Button>
+                    </CardBody>
+                  </Card>
+                ))}
               </CardDeck>
             </Container>
           </>
