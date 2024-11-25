@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container, Col, Row, ListGroup } from "reactstrap";
-import { Link, Routes, Route } from "react-router-dom"; // Corrected Link import
+import { Link, Routes, Route } from "react-router-dom";
 import AdminHome from "./admin/AdminHome";
 import AdminManageCustomers from "./admin/AdminManageCustomers";
 import AdminManageHomeMakers from "./admin/AdminManageHomeMakers";
@@ -45,16 +45,17 @@ const User = () => {
   };
 
   return (
-    <div className="text-center">
+    <div className="text-center py-4 bg-light">
       <Container>
-        <Row>
+        {/* Navigation Links */}
+        <Row className="mb-4">
           <Col>
-            <ListGroup className="list-group-horizontal my-2">
+            <ListGroup className="list-group-horizontal justify-content-center">
               {role === "admin" &&
                 paths.admin.map((item, index) => (
                   <Link
                     key={index}
-                    className="list-group-item list-group-item-action bg-secondary text-light font-weight-bold user-component"
+                    className="list-group-item list-group-item-action bg-primary text-white font-weight-bold mx-2 rounded shadow-sm"
                     to={item.path}
                   >
                     {item.value}
@@ -64,7 +65,7 @@ const User = () => {
                 paths.customer.map((item, index) => (
                   <Link
                     key={index}
-                    className="list-group-item list-group-item-action bg-secondary text-light font-weight-bold user-component"
+                    className="list-group-item list-group-item-action bg-success text-white font-weight-bold mx-2 rounded shadow-sm"
                     to={item.path}
                   >
                     {item.value}
@@ -74,7 +75,7 @@ const User = () => {
                 paths.homeMaker.map((item, index) => (
                   <Link
                     key={index}
-                    className="list-group-item list-group-item-action bg-secondary text-light font-weight-bold user-component"
+                    className="list-group-item list-group-item-action bg-info text-white font-weight-bold mx-2 rounded shadow-sm"
                     to={item.path}
                   >
                     {item.value}
@@ -83,8 +84,13 @@ const User = () => {
             </ListGroup>
           </Col>
         </Row>
+
+        {/* Content Area */}
         <Row>
-          <Col>
+          <Col
+            md={{ size: 10, offset: 1 }}
+            className="bg-white p-4 rounded shadow-sm"
+          >
             {role === "customer" && (
               <Routes>
                 <Route path="/customer/profile" element={<CustomerProfile />} />

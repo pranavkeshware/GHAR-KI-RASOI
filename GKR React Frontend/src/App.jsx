@@ -37,7 +37,7 @@ function App() {
   }, []); // Empty dependency array to run only once on component mount
 
   return (
-    <div className="text-center" style={{ background: "pink" }}>
+    <div className="text-center" style={{ background: "#800020" }}>
       <Router>
         <ToastContainer />
         <Container>
