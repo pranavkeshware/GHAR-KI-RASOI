@@ -5,5 +5,7 @@
     <fullyQualifiedTypeName name="com.app.pojos.Orders"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="org.json.JSONObject"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.CrossOrigin"/>
+    <fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.WebMvcConfigurer"/>
     <fullyQualifiedTypeName name="org.springframework.security.crypto.bcrypt.BCrypt"/>
 </qualifiedTypeNameHistroy>
