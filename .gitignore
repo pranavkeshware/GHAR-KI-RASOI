@@ -1,0 +1,8 @@
+# Ignore the .metadata folder
+.metadata/
+
+# Ignore all log files
+*.log
+
+# Ignore temporary files
+*.tmp

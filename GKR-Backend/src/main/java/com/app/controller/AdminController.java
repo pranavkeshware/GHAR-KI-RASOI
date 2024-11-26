@@ -22,7 +22,7 @@ public class AdminController {
 
 	public AdminController() {
 		super();
-		System.out.println("in ctor of " + getClass().getName() + " " + adminService);
+		System.out.println("in controller of " + getClass().getName() + " " + adminService);
 	}
 
 	// add REST clnt request handling method : for authenticating Admin
