@@ -1,0 +1,63 @@
+package com.app.service;
+
+import com.app.pojos.Orders;
+import com.app.dao.OrdersRepository;
+import com.razorpay.Order;
+import com.razorpay.RazorpayClient;
+import com.app.pojos.PaymentStatus;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.json.JSONObject;
+
+@Service
+public class OrdersServiceImpl implements IOrdersService {
+
+    @Autowired
+    private OrdersRepository ordersRepository;
+
+    private static final String KEY_ID = "your_razorpay_key"; // Razorpay Key ID
+    private static final String KEY_SECRET = "your_razorpay_secret"; // Razorpay Secret Key
+
+    @Override
+    @Transactional
+    public Orders createOrder(int customerId, int homeMakerId, String amount) throws Exception {
+        RazorpayClient razorpayClient = new RazorpayClient(KEY_ID, KEY_SECRET);
+
+        // Create Razorpay Order
+        JSONObject orderRequest = new JSONObject();
+        orderRequest.put("amount", Long.parseLong(amount) * 100); // Amount in paise
+        orderRequest.put("currency", "INR");
+        orderRequest.put("payment_capture", 1);
+
+        Order razorpayOrder = razorpayClient.Orders.create(orderRequest); // Create Razorpay order
+
+        // Create and save the order in your database
+        Orders order = new Orders();
+        order.setOrderId(razorpayOrder.get("id").toString());
+        order.setAmount(amount);
+        order.setCustomerId(customerId);
+        order.setHomeMakerId(homeMakerId);
+        order.setDateTime(); // Set the date/time of the order
+        order.setStatus(PaymentStatus.PENDING); // Set status to PENDING initially
+
+        return ordersRepository.save(order); // Save order to database
+    }
+
+    @Override
+    @Transactional
+    public Orders updatePaymentStatus(String paymentId, String orderId, String status, String receipt) {
+        // Find order by orderId
+        Orders order = ordersRepository.findByOrderId(orderId);
+
+        if (order != null) {
+            // Update payment details in the order
+            order.setPaymentId(paymentId);
+            order.setReceipt(receipt);
+            order.setStatus(PaymentStatus.valueOf(status)); // Set the payment status (SUCCESS/FAILED)
+            ordersRepository.save(order); // Save updated order in database
+        }
+
+        return order;
+    }
+}
