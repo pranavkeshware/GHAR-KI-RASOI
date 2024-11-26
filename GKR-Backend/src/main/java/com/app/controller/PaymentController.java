@@ -4,17 +4,10 @@ import com.app.dto.ResponseDTO;
 import com.app.pojos.Orders;
 import com.app.service.OrdersServiceImpl;
 
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.util.StreamUtils;
-
-import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,7 +41,7 @@ public class PaymentController {
 
             return ResponseEntity.ok(new ResponseDTO("Order Created Successfully", orderResponse));
         } catch (Exception e) {
-            return ResponseEntity.status(500).body(new ResponseDTO("Failed to create order", null));
+            return ResponseEntity.status(500).body(new ResponseDTO<Object>("Failed to create order", null));
         }
     }
 
